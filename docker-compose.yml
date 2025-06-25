@@ -2,21 +2,19 @@ version: "3"
 
 services:
   db:
-        image: mysql:5.7
-        volumes:
-            - "./shared/db:/var/lib/mysql:Z"
-        environment:
-            - MYSQL_DATABASE=cms
-            - MYSQL_USER=cms
-            - MYSQL_RANDOM_ROOT_PASSWORD=yes
-        mem_limit: 1g
-        env_file: config.env
-        restart: always
-        networks:
-           default:
-             aliases:
-                - mysql
-
+    image: mysql:8.0
+    ports:
+    - "3315:3306"
+    volumes:
+    - ./containers/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "cms"
+      networks:
+        default:
+          aliases:
+            - mysql
+      
   xmr:
     image: ghcr.io/xibosignage/xibo-xmr:develop
     ports:
