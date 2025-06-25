@@ -10,10 +10,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "cms"
-      networks:
-        default:
-          aliases:
-            - mysql
       
   xmr:
     image: ghcr.io/xibosignage/xibo-xmr:develop
